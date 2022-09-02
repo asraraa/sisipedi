@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+	{{page_title}}
+{% endblock page_title %}
+
+{% block contents %}
+    <div class="text-center mt-5">
+        <h1>{{page_title}}</h1>
+    </div>
+	
+	   {% if messages %}
+        	<div class="messages alert alert-success col-9 mx-auto mt-" role="alert">
+            	{% for message in messages %}
+                	{{ message }}
+            	{% endfor %}
+        	</div>
+    	{% endif %}
+
+	<form method="POST">
+			{% csrf_token %}
+
+			{% for form in register_form %}
+				<div class="form-group col-9 mx-auto">
+					{{form.label}}
+					{{form}}
+				</div>
+				<br>
+			{% endfor %}
+			
+			<br>
+			
+			<div class="form-group col-9 mx-auto">
+			<button class='btn btn-primary' type="Submit">Daftar</button>
+		</div>
+	</form>
+
+{% endblock contents %}
