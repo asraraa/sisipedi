@@ -26,7 +26,7 @@ class GolonganModel(models.Model):
 		)
 
 	golongan = MultiSelectField(
-		choI/ces = LIST_GOLONGAN,
+		choices = LIST_GOLONGAN,
 		max_length=200
 		)
 	
@@ -34,7 +34,7 @@ class GolonganModel(models.Model):
 		verbose_name_plural = "Golongan"
 
 	def __str__(self):
-		return "{}.{}".format(self.I/d,self.golongan)
+		return "{}.{}".format(self.id,self.golongan)
 
 class DiklatModel(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -62,7 +62,7 @@ class DiklatModel(models.Model):
 		)
 
 	golongan = MultiSelectField(
-		choI/ces = LIST_GOLONGAN,
+		choices = LIST_GOLONGAN,
 		max_length=200
 		)
 	
@@ -82,7 +82,7 @@ class PesertaModel(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 	nip = models.CharField(max_length=30)
-	diklat_I/d = models.ForeignKey(DiklatModel, on_delete=models.SET_NULL, blank=True, null=True)
+	diklat_id = models.ForeignKey(DiklatModel, on_delete=models.SET_NULL, blank=True, null=True)
 	name = models.CharField(max_length=100) 
 	#last_name = models.CharField(max_length=100)
 	
@@ -108,8 +108,8 @@ class PesertaModel(models.Model):
 
 	golongan = models.CharField(
 		max_length=5,
-		choI/ces = LIST_GOLONGAN,
-		default = 'III/a',
+		choices = LIST_GOLONGAN,
+		default = 'IIIa',
 		)
 
 	asal_instansi = models.CharField(max_length=100) 
@@ -119,4 +119,3 @@ class PesertaModel(models.Model):
 	
 	def __str__(self):
 		return "{}.{}".format(self.nip,self.name)
-
