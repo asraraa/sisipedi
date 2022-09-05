@@ -1,1 +1,1 @@
-web gunicorn sisipedi.wsgi:application --log-file -
+web: gunicorn sisipedi.wsgi
