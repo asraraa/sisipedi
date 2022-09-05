@@ -1,2 +1,1 @@
-release: python manage.py migrate
-web: gunicorn sisipedi.wsgi --log-file=-
+web gunicorn sisipedi.wsgi:application --log-file -
