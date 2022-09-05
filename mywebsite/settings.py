@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "diklat",
     "multiselectfield",
+    "import_export",
 ]
 
 MIDDLEWARE = [
