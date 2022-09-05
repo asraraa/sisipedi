@@ -6,27 +6,27 @@ from django.utils import timezone
 # Create your models here.
 class GolonganModel(models.Model):
 	LIST_GOLONGAN = (
-		('Ia','Ia'),
-		('Ib','Ib'),
-		('Ic','Ic'),
-		('Id','Id'),
-		('IIa','IIa'),
-		('IIb','IIb'),
-		('IIc','IIc'),
-		('IId','IId'),
-		('IIIa','IIIa'),
-		('IIIb','IIIb'),
-		('IIIc','IIIc'),
-		('IIId','IIId'),
-		('IVa','IVa'),
-		('IVb','IVb'),
-		('IVc','IVc'),
-		('IVd','IVd'),
-		('IVe','IVe'),
+		('I/a','I/a'),
+		('I/b','I/b'),
+		('I/c','I/c'),
+		('I/d','I/d'),
+		('II/a','II/a'),
+		('II/b','II/b'),
+		('II/c','II/c'),
+		('II/d','II/d'),
+		('III/a','III/a'),
+		('III/b','III/b'),
+		('III/c','III/c'),
+		('III/d','III/d'),
+		('IV/a','IV/a'),
+		('IV/b','IV/b'),
+		('IV/c','IV/c'),
+		('IV/d','IV/d'),
+		('IV/e','IV/e'),
 		)
 
 	golongan = MultiSelectField(
-		choices = LIST_GOLONGAN,
+		choI/ces = LIST_GOLONGAN,
 		max_length=200
 		)
 	
@@ -34,7 +34,7 @@ class GolonganModel(models.Model):
 		verbose_name_plural = "Golongan"
 
 	def __str__(self):
-		return "{}.{}".format(self.id,self.golongan)
+		return "{}.{}".format(self.I/d,self.golongan)
 
 class DiklatModel(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -42,27 +42,27 @@ class DiklatModel(models.Model):
 	nama_diklat = models.CharField(max_length=255)
 	
 	LIST_GOLONGAN = (
-		('Ia','Ia'),
-		('Ib','Ib'),
-		('Ic','Ic'),
-		('Id','Id'),
-		('IIa','IIa'),
-		('IIb','IIb'),
-		('IIc','IIc'),
-		('IId','IId'),
-		('IIIa','IIIa'),
-		('IIIb','IIIb'),
-		('IIIc','IIIc'),
-		('IIId','IIId'),
-		('IVa','IVa'),
-		('IVb','IVb'),
-		('IVc','IVc'),
-		('IVd','IVd'),
-		('IVe','IVe'),
+		('I/a','I/a'),
+		('I/b','I/b'),
+		('I/c','I/c'),
+		('I/d','I/d'),
+		('II/a','II/a'),
+		('II/b','II/b'),
+		('II/c','II/c'),
+		('II/d','II/d'),
+		('III/a','III/a'),
+		('III/b','III/b'),
+		('III/c','III/c'),
+		('III/d','III/d'),
+		('IV/a','IV/a'),
+		('IV/b','IV/b'),
+		('IV/c','IV/c'),
+		('IV/d','IV/d'),
+		('IV/e','IV/e'),
 		)
 
 	golongan = MultiSelectField(
-		choices = LIST_GOLONGAN,
+		choI/ces = LIST_GOLONGAN,
 		max_length=200
 		)
 	
@@ -82,34 +82,34 @@ class PesertaModel(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 	nip = models.CharField(max_length=30)
-	diklat_id = models.ForeignKey(DiklatModel, on_delete=models.SET_NULL, blank=True, null=True)
+	diklat_I/d = models.ForeignKey(DiklatModel, on_delete=models.SET_NULL, blank=True, null=True)
 	name = models.CharField(max_length=100) 
 	#last_name = models.CharField(max_length=100)
 	
 	LIST_GOLONGAN = (
-		('Ia','Ia'),
-		('Ib','Ib'),
-		('Ic','Ic'),
-		('Id','Id'),
-		('IIa','IIa'),
-		('IIb','IIb'),
-		('IIc','IIc'),
-		('IId','IId'),
-		('IIIa','IIIa'),
-		('IIIb','IIIb'),
-		('IIIc','IIIc'),
-		('IIId','IIId'),
-		('IVa','IVa'),
-		('IVb','IVb'),
-		('IVc','IVc'),
-		('IVd','IVd'),
-		('IVe','IVe'),
+		('I/a','I/a'),
+		('I/b','I/b'),
+		('I/c','I/c'),
+		('I/d','I/d'),
+		('II/a','II/a'),
+		('II/b','II/b'),
+		('II/c','II/c'),
+		('II/d','II/d'),
+		('III/a','III/a'),
+		('III/b','III/b'),
+		('III/c','III/c'),
+		('III/d','III/d'),
+		('IV/a','IV/a'),
+		('IV/b','IV/b'),
+		('IV/c','IV/c'),
+		('IV/d','IV/d'),
+		('IV/e','IV/e'),
 		)
 
 	golongan = models.CharField(
 		max_length=5,
-		choices = LIST_GOLONGAN,
-		default = 'IIIa',
+		choI/ces = LIST_GOLONGAN,
+		default = 'III/a',
 		)
 
 	asal_instansi = models.CharField(max_length=100) 
