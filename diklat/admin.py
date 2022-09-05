@@ -3,8 +3,25 @@ from django.contrib import admin
 # Register your models here.
 from .models import DiklatModel, GolonganModel, PesertaModel
 from import_export.admin import ExportActionMixin
+from import_export.admin import ImportExportModelAdmin
+
+from .resources import PesertaDetailsAdminResource
+
+class PesertaDetailAdmin(ImportExportModelAdmin):
+	list_display = ('nip','name','diklat_id','golongan','asal_instansi')
+	resource_class = PesertaDetailsAdminResource
+
+	fieldsets = [
+		("NIP dan Nama", {"fields": ["nip","name"]}),
+		("Golongan", {"fields":["golongan"]}),
+		("Inserted At", {"fields":["created_at"]})
+	]
+	readonly_fields = ("nip","created_at","golongan")
+
 
 class DiklatAdmin(ExportActionMixin, admin.ModelAdmin):
+	list_display = ('created_at','nama_diklat','golongan','started_at','ended_at')
+
 	fieldsets = [
 		("ID dan Nama", {"fields": ["id","created_at","nama_diklat"]}),
 		("Golongan", {"fields":["golongan"]}),
@@ -12,13 +29,24 @@ class DiklatAdmin(ExportActionMixin, admin.ModelAdmin):
 	]
 	readonly_fields = ("id","created_at")
 
-	#list_display = ('nama_diklat','golongan')
-
-class PesertaAdmin(ExportActionMixin, admin.ModelAdmin):
-	list_display = ('diklat_id','name','nip','golongan','asal_instansi')
-	#form = PesertaForm
-
 admin.site.register(GolonganModel)
 admin.site.register(DiklatModel, DiklatAdmin)
-admin.site.register(PesertaModel, PesertaAdmin)
+admin.site.register(PesertaModel,PesertaDetailAdmin)
+
+
+
+# class PesertaAdmin(ExportActionMixin, admin.ModelAdmin):
+# 	def formfield_for_foreignkey(self, db_field, request, **kwargs):
+# 		if db_field.name == "diklat_id":
+# 			kwargs["queryset"] = DiklatModel.objects.order_by('started_at')
+# 			return super(PesertaAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+        
+# 	list_display = ('created_at','diklat_id','name','nip','golongan','asal_instansi')
+
+# 	fieldsets = [
+# 		("ID dan Nama", {"fields": ["nip","name"]}),
+# 		("Golongan", {"fields":["golongan"]}),
+# 		("Inserted At", {"fields":["created_at"]})
+# 	]
+# 	readonly_fields = ("nip","created_at")
 

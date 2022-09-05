@@ -47,13 +47,13 @@ class DiklatForm(forms.ModelForm):
 
 
 class DiklatModelChoiceField(forms.ModelChoiceField):
-	def label_from_instance(self, diklat_id):
-		label = f"{diklat_id.nama_diklat}"
+	def label_from_instance(self, obj):
+		label = f"{obj.nama_diklat}"
 		return label
 		
 
 class PesertaForm(forms.ModelForm):
-	diklat_id = DiklatModelChoiceField(queryset = DiklatModel.objects.filter(started_at__range = [datetime.now().date(), "2100-12-31"]))
+	diklat_id = DiklatModelChoiceField(queryset = DiklatModel.objects.filter(started_at__range = [datetime.now().date(), "2100-12-31"]), initial=0, widget=forms.Select(attrs={'class':'form-control'}))
 	print(diklat_id)
 
 	class Meta:

@@ -18,6 +18,10 @@ from django.urls import path, include
 
 from . import views
 
+admin.site.site_header = 'SISIPEDI Administration'
+admin.site.index_title = 'Features Area'
+admin.site.site_title = 'SISIPEDI Site Admin'
+
 urlpatterns = [
     path("diklat/", include(("diklat.urls", "diklat"), namespace="diklat")),
     path("", views.index, name="index"),
