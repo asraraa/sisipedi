@@ -14,5 +14,5 @@ class PesertaDetailsAdminResource(resources.ModelResource):
             'nip',
             'name',
             'golongan',
-            'asal_instansi',
+            'instansi',
         )

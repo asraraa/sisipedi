@@ -63,7 +63,8 @@ class PesertaForm(forms.ModelForm):
 			'name',
 			'nip',
 			'golongan',
-			'asal_instansi',
+			'instansi',
+			'jabatan',
 			'diklat_id',
 		]
 
@@ -71,7 +72,8 @@ class PesertaForm(forms.ModelForm):
 			'name':'Nama Lengkap',
 			'nip':'NIP',
 			'golongan': 'Golongan',
-			'asal_instansi':'Asal Instansi',
+			'instansi':'Instansi',
+			'jabatan':'Jabatan',
 			'diklat_id':'Pilih Pelatihan',
 		}
 
@@ -91,10 +93,15 @@ class PesertaForm(forms.ModelForm):
 				attrs = {
 					'class':'form-select',
 			}),
-			'asal_instansi': forms.TextInput(
+			'instansi': forms.TextInput(
 				attrs= {
 					'class':'form-control',
 					'placeholder':'Isikan Asal Instansi',
+			}),
+			'jabatan': forms.TextInput(
+				attrs= {
+					'class':'form-control',
+					'placeholder':'cth: Guru',
 			}),
 			'diklat_id': forms.Select(
 				attrs = {

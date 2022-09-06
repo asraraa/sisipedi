@@ -112,7 +112,8 @@ class PesertaModel(models.Model):
 		default = 'IIIa',
 		)
 
-	asal_instansi = models.CharField(max_length=100) 
+	instansi = models.CharField(max_length=100)
+	jabatan = models.CharField(max_length=30, null=True) 
 
 	class Meta:
 		verbose_name_plural = "Peserta"
