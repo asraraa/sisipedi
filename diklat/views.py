@@ -53,10 +53,10 @@ def register(request,nip):
 		# Check whether the selected golongan meets the diklat golongan requirements
 		if any(gol in selected_golongan for gol in gol_selected_diklat):
 			register_form.save()
-			messages.info(request, 'Pendaftaran Berhasil')
+			messages.success(request, 'Anda Berhasil Mendaftar Pelatihan')
 			return redirect('index')
 		else:
-			messages.info(request, 'Pendaftaran gagal. Golongan tidak memenuhi syarat')
+			messages.error(request, 'Golongan tidak memenuhi syarat')
 			return redirect('index')
 
 	else:

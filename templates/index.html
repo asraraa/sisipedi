@@ -10,9 +10,22 @@
     </div>
 
     {% if messages %}
-        <div class="messages alert alert-dark col-9 mx-auto mt-" role="alert">
+        <div class="messages col-9 mx-auto mt-" role="alert">
             {% for message in messages %}
-                {{ message }}
+                {% if message.tags == 'success' %}
+                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                    <script>
+                        var m = "{{ message }}";
+                        swal("Selamat!", m, "success") 
+                    </script>
+                {% endif %}
+                {% if message.tags == 'error' %}
+                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                    <script>
+                        var m = "{{ message }}";
+                        swal("Maaf!", m, "error") 
+                    </script>
+                {% endif %}
             {% endfor %}
         </div>
     {% endif %}

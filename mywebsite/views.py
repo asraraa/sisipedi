@@ -16,7 +16,8 @@ def index(request):
 			try:
 				get_nip = PesertaModel.objects.get(nip=nip)
 			
-				messages.warning(request, 'NIP sudah terdaftar!')
+				messages.error(request,'NIP sudah terdaftar')
+				
 				return redirect('index')
 			
 			except PesertaModel.DoesNotExist:
@@ -29,8 +30,8 @@ def index(request):
 	
 	else:
 		context = {
-			'page_title':'Pendaftaran Diklat',
-			'banner':'/img/banner_home.png',
+			'page_title':'Pendaftaran Pelatihan',
+			# 'banner':'/img/banner_home.png',
 			'peserta_form':peserta_form
 		}
 
