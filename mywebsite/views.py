@@ -37,7 +37,7 @@ def index(request):
 		context = {
 			'page_title':'Home',
 			'title':'Pendaftaran Diklat',
-			# 'banner':'/img/banner_home.png',
+			'background':'/img/bg-01.jpg',
 			'peserta_form':peserta_form
 		}
 
