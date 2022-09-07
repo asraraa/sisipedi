@@ -20,11 +20,11 @@ class PesertaDetailAdmin(ImportExportModelAdmin):
 
 
 class DiklatAdmin(ImportExportModelAdmin):
-	list_display = ('created_at','nama_diklat','golongan','started_at','ended_at')
+	list_display = ('created_at','nama_diklat','golongan','jabatan','started_at','ended_at')
 
 	fieldsets = [
 		("ID dan Nama", {"fields": ["id","created_at","nama_diklat"]}),
-		("Golongan", {"fields":["golongan"]}),
+		("Syarat golongan dan jabatan", {"fields":["golongan","jabatan"]}),
 		("Waktu", {"fields":["started_at","ended_at"]})
 	]
 	readonly_fields = ("id","created_at")

@@ -4,8 +4,15 @@ from django.forms.widgets import NumberInput
 from .models import DiklatModel, PesertaModel
 from datetime import datetime
 
+# class JabatanForm(forms.Form):
+#     jabatan = forms.CharField(
+#                     max_length=100,
+#                     widget=forms.TextInput(attrs={
+#                         'placeholder': 'Isikan Syarat Jabatan',
+#                     }),
+#                     required=False)
+
 class DiklatForm(forms.ModelForm):
-	
 	class Meta:
 		model = DiklatModel
 		fields = [
@@ -13,11 +20,13 @@ class DiklatForm(forms.ModelForm):
 			'started_at',
 			'ended_at',
 			'golongan',
+			'jabatan',
 		]
 
 		labels = {
 			'nama_diklat':'Nama Pelatihan',
 			'golongan':'Syarat Golongan',
+			'jabatan':'Syarat Jabatan',
 			'started_at':'Tanggal Mulai',
 			'ended_at':'Tanggal Berakhir',
 		}
@@ -32,6 +41,11 @@ class DiklatForm(forms.ModelForm):
 				attrs = {
 					'class':'btn-group',
 			}),
+			'jabatan': forms.TextInput(
+				attrs = {
+					'class':'form-control',
+					'placeholder':'Boleh kosong. Jika syarat lebih dari 1, pisahkan dengan karakter koma (,) tanpa tambahan spasi. Contoh: Guru,Kepala Sekolah',
+				}),
 			'started_at': forms.DateInput(
 				attrs= {
 					'type': 'date',
@@ -54,7 +68,7 @@ class DiklatModelChoiceField(forms.ModelChoiceField):
 
 class PesertaForm(forms.ModelForm):
 	diklat_id = DiklatModelChoiceField(queryset = DiklatModel.objects.filter(started_at__range = [datetime.now().date(), "2100-12-31"]), initial=0, widget=forms.Select(attrs={'class':'form-control'}))
-	print(diklat_id)
+	#print(diklat_id)
 
 	class Meta:
 		model = PesertaModel
@@ -110,6 +124,7 @@ class PesertaForm(forms.ModelForm):
 			
 		}
 
+
 class IsEligibleForm(forms.ModelForm):
 	class Meta:
 		model = PesertaModel
@@ -119,7 +134,7 @@ class IsEligibleForm(forms.ModelForm):
 		]
 
 		labels = {
-			'nip':'Masukkan NIP Anda',
+			'nip':'Silakan Input NIP Calon Peserta',
 		}
 
 		widgets = {
@@ -129,6 +144,12 @@ class IsEligibleForm(forms.ModelForm):
 					'placeholder':'cth: 199103192022062001',
 				}),
 		}
+
+	# def clean_nip(self, *args, **kwargs):
+	# 	nip = self.cleaned_data.get("nip")
+	# 	if len(nip) != 18:
+	# 		print("NIPPPPPPP " , len(nip))
+	# 		raise forms.ValidationError("NIP harus 18 digit!")
 
 
 #class DiklatForm(forms.Form):
