@@ -13,24 +13,30 @@ def index(request):
 		if peserta_form.is_valid():
 			nip = peserta_form.cleaned_data.get('nip')
 			
-			try:
-				get_nip = PesertaModel.objects.get(nip=nip)
+			# nip harus 18 digit
+			if(len(nip) == 18):
+				try:
+					peserta = PesertaModel.objects.get(nip=nip)
+					attended_diklat = peserta.diklat_id
+					messages.error(request,attended_diklat)
+					return redirect('index')
+					
+				except PesertaModel.DoesNotExist:
+					peserta = None
+					
+					context = {
+						'nip':nip
+					}
+					return redirect('diklat:register',nip=nip)
 			
-				messages.error(request,'NIP sudah terdaftar')
-				
+			else:
+				messages.warning(request,'NIP harus 18 digit')
 				return redirect('index')
-			
-			except PesertaModel.DoesNotExist:
-				peserta = None
-				#print(nip)
-				context = {
-					'nip':nip
-				}
-				return redirect('diklat:register',nip=nip)
 	
 	else:
 		context = {
-			'page_title':'Pendaftaran Pelatihan',
+			'page_title':'Home',
+			'title':'Pendaftaran Diklat',
 			# 'banner':'/img/banner_home.png',
 			'peserta_form':peserta_form
 		}

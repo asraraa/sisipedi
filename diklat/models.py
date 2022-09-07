@@ -2,6 +2,7 @@ from django.db import models
 from .validators import validate_nip
 from multiselectfield import MultiSelectField
 from django.utils import timezone
+from django.core.validators import MinLengthValidator
 
 # Create your models here.
 class GolonganModel(models.Model):
@@ -66,6 +67,7 @@ class DiklatModel(models.Model):
 		max_length=200
 		)
 	
+	jabatan = models.CharField(max_length=100,null=True,blank=True,help_text="Boleh kosong. Jika syarat lebih dari 1, pisahkan dengan karakter koma tanpa tambahan spasi (,). Contoh: Guru,Kepala Sekolah")
 	#status = models.BooleanField(default=False)
 
 	started_at = models.DateField(default=timezone.now)
@@ -82,6 +84,7 @@ class PesertaModel(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 	nip = models.CharField(max_length=30)
+	#nip = models.CharField('Volume Number', max_length=18, validators=[MinLengthValidator(18)])
 	diklat_id = models.ForeignKey(DiklatModel, on_delete=models.SET_NULL, blank=True, null=True)
 	name = models.CharField(max_length=100) 
 	#last_name = models.CharField(max_length=100)
@@ -113,7 +116,7 @@ class PesertaModel(models.Model):
 		)
 
 	instansi = models.CharField(max_length=100)
-	jabatan = models.CharField(max_length=30, null=True) 
+	jabatan = models.CharField(max_length=30, null=True,blank=True) 
 
 	class Meta:
 		verbose_name_plural = "Peserta"
