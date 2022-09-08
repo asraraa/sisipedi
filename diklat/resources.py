@@ -16,4 +16,5 @@ class PesertaDetailsAdminResource(resources.ModelResource):
         )
 
     diklat = fields.Field(column_name='nama pelatihan', attribute='diklat_id', widget=ForeignKeyWidget(DiklatModel, field='nama_diklat'))
-    tgl = fields.Field(column_name='tanggal pelatihan', attribute='diklat_id', widget=ForeignKeyWidget(DiklatModel, field='started_at'))
+    diklat_mulai = fields.Field(column_name='tanggal mulai pelatihan', attribute='diklat_id', widget=ForeignKeyWidget(DiklatModel, field='started_at'))
+    diklat_berakhir = fields.Field(column_name='tanggal akhir pelatihan', attribute='diklat_id', widget=ForeignKeyWidget(DiklatModel, field='ended_at'))
