@@ -10,7 +10,7 @@
     </div>
 
     {% if messages %}
-        <div class="messages col-9 mx-auto mt-" role="alert">
+        <div class="messages col-6 mx-auto mt-" role="alert">
             {% for message in messages %}
                 {% if message.tags == 'success' %}
                     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -49,17 +49,17 @@
         {% csrf_token %}
         
         {% for field in peserta_form %}
-            <div class="form-group col-9 mx-auto mt-5">
+            <div class="form-group col-6 mx-auto mt-5">
                 {{field.label}}
                 {{field}}
             </div>
         {% endfor %}
 
-        <div id="admin" class="form-text col-9 mx-auto">
+        <div id="admin" class="form-text col-6 mx-auto">
          <a href="admin/" class="text-decoration-none link-secondary">Masuk sebagai admin</a>
         </div>
       
-        <div class="form-group col-9 mx-auto mt-3">
+        <div class="form-group col-6 mx-auto mt-3">
             <button class="btn btn-primary" type="Submit">Submit</button>
         </div>
         
