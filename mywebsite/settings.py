@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-a0)1w6=+$kh0ai(7o@l46v25d)k+efig574h39nqn-8pk7zl5_"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['sisipedi.herokuapp.com']
 
