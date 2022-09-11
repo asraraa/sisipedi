@@ -36,7 +36,9 @@ def index(request):
 	else:
 		context = {
 			'page_title':'Home',
-			'title':'Pendaftaran Diklat',
+			'title':'PENDAFTARAN DIKLAT FUNGSIONAL',
+			'title2':'BADAN PENGEMBANGAN SUMBER DAYA MANUSIA',
+			'title3':'PROVINSI SUMATERA BARAT',
 			'background':'/img/bg-01.jpg',
 			'peserta_form':peserta_form
 		}
