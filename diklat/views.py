@@ -36,6 +36,7 @@ def create(request):
 
 	return render(request,'diklat/create.html',context)
 
+@csrf_exempt
 def register(request,nip):
 	register_form = PesertaForm(request.POST or None,initial={'nip':nip})
 	
