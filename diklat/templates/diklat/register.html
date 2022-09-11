@@ -5,8 +5,9 @@
 {% endblock page_title %}
 
 {% block contents %}
-    <div class="text-center mt-2">
-        <h1> {{title}}</h1>
+<div class="register">
+	<div class="text-center mt-2">
+         <h3><span>{{title}}</span></h3>
     </div>
 	
 	   {% if messages %}
@@ -21,8 +22,8 @@
 			{% csrf_token %}
 
 			{% for form in register_form %}
-				<div class="form-group col-9 mx-auto">
-					{{form.label}}
+				<div class="form-group col-7 mx-auto">
+					<h5>{{form.label}}</h5>
 					{{form}}
 				</div>
 				<br>
@@ -30,9 +31,11 @@
 			
 			<br>
 			
-			<div class="form-group col-9 mx-auto">
-			<button class='btn btn-primary' type="Submit">Daftar</button>
+			<div class="form-group col-7 mx-auto">
+			<button class='btn btn-primary shine' type="Submit">Daftar</button>
 		</div>
 	</form>
+</div>
+    
 
 {% endblock contents %}

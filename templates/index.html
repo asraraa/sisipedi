@@ -1,12 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block page_title %}
     SISIPEDI | {{page_title}}
 {% endblock page_title %}
 
 {% block contents %}
-    <div class="text-center mt-5">
-        <h1>{{title}}</h1>
+    <div class="text-center mx-auto modal-footer header">
+        <img style="width: 150px; height: 150px" src="{% static "/img/icon.png" %}" alt="">
+        <h2><span>{{title}}</span><br><span>{{title2}}</span><br><span>{{title3}}</span></h2>
     </div>
 
     {% if messages %}
@@ -45,24 +47,31 @@
     {% endif %}
   
     
-    <form method="POST">
-        {% csrf_token %}
-        
-        {% for field in peserta_form %}
-            <div class="form-group col-6 mx-auto mt-5">
-                {{field.label}}
-                {{field}}
-            </div>
-        {% endfor %}
+    <div class="form-container">
+        <div class="box">
+            <span></span>
+            <div class="content">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    {% for field in peserta_form %}
+                            <h4>{{field.label}}</h4>
+                            <div class="nip-form">
+                                {{field}}    
+                            </div>
+                    {% endfor %}
 
-        <div id="admin" class="form-text col-6 mx-auto">
-         <a href="admin/" class="text-decoration-none link-secondary">Masuk sebagai admin</a>
+                    <button class="btn btn-primary button shine" type="Submit">Submit</button>
+                </form>     
+            </div>
         </div>
-      
-        <div class="form-group col-6 mx-auto mt-3">
-            <button class="btn btn-primary" type="Submit">Submit</button>
+    </div>
+
+    <div class="position-relative">
+        <div id="admin" class="form-text position-absolute bottom-0 end-0">
+            <a href="admin/" class="text-decoration-none link-secondary">Masuk sebagai admin</a>
         </div>
-        
-    </form>
+    </div>
+    
  
 {% endblock contents %}
