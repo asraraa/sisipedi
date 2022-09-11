@@ -36,7 +36,6 @@ def create(request):
 
 	return render(request,'diklat/create.html',context)
 
-@csrf_exempt
 def register(request,nip):
 	register_form = PesertaForm(request.POST or None,initial={'nip':nip})
 	
@@ -85,12 +84,11 @@ def register(request,nip):
 			messages.info(request, 'Golongan tidak memenuhi syarat')
 			return redirect('index')
 
-	else:
-		context = {
-			'page_title':'Registrasi',
-			'title':'FORMULIR PENDAFTARAN DIKLAT',
-			'register_form':register_form,
-			'nip':nip,
-		}
-		
-		return render(request,'diklat/register.html',context)
+	context = {
+		'page_title':'Registrasi',
+		'title':'FORMULIR PENDAFTARAN DIKLAT',
+		'register_form':register_form,
+		'nip':nip,
+	}
+	
+	return render(request,'diklat/register.html',context)
