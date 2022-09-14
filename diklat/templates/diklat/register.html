@@ -1,12 +1,15 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block page_title %}
 	SISIPEDI | {{page_title}}
 {% endblock page_title %}
 
 {% block contents %}
-    <div class="text-center mt-2">
-        <h1> {{title}}</h1>
+<div>
+	 <div class="text-center mx-auto modal-footer header">
+        <img style="width: 135px; height: 135px; margin-right: 10px" src="{% static "/img/icon.png" %}" alt="">
+        <h4><span>{{title}}</span><br><span>{{title2}}</span><br><span>{{title3}}</span></h4>
     </div>
 	
 	   {% if messages %}
@@ -17,22 +20,26 @@
         	</div>
     	{% endif %}
 
-	<form method="POST">
-			{% csrf_token %}
+    <div class="register-form">
+    	<form method="POST">
+				{% csrf_token %}
 
-			{% for form in register_form %}
-				<div class="form-group col-9 mx-auto">
-					{{form.label}}
-					{{form}}
-				</div>
+				{% for form in register_form %}
+					<div class="form-group col-7 mx-auto">
+						<h5>{{form.label}}</h5>
+						{{form}}
+					</div>
+					<br>
+				{% endfor %}
+				
 				<br>
-			{% endfor %}
-			
-			<br>
-			
-			<div class="form-group col-9 mx-auto">
-			<button class='btn btn-primary' type="Submit">Daftar</button>
-		</div>
-	</form>
+				
+				<div class="form-group col-7 mx-auto">
+				<button class='btn btn-primary shine' type="Submit">Daftar</button>
+			</div>
+		</form>
+	</div>
+</div>
+    
 
 {% endblock contents %}

@@ -84,12 +84,13 @@ def register(request,nip):
 			messages.info(request, 'Golongan tidak memenuhi syarat')
 			return redirect('index')
 
-	else:
-		context = {
-			'page_title':'Registrasi',
-			'title':'FORMULIR PENDAFTARAN DIKLAT',
-			'register_form':register_form,
-			'nip':nip,
-		}
-		
-		return render(request,'diklat/register.html',context)
+	context = {
+		'page_title':'Registrasi',
+		'title':'FORMULIR PENDAFTARAN DIKLAT FUNGSIONAL',
+		'title2':'BADAN PENGEMBANGAN SUMBER DAYA MANUSIA',
+		'title3':'PROVINSI SUMATERA BARAT',
+		'register_form':register_form,
+		'nip':nip,
+	}
+	
+	return render(request,'diklat/register.html',context)

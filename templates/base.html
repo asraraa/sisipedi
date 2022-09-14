@@ -14,10 +14,14 @@
 
 	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
 	
+	
 </head>
 
 <body>
-	<!--<nav class="navbar navbar-expand-sm bg-light">
+	<!--
+background-image: url("{% static "/img/bg-01.jpg" %}");
+
+	<nav class="navbar navbar-expand-sm bg-light">
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="#">Pendaftaran Diklat</a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,11 +43,11 @@
 	</nav>
 	<br>
 
-	<img style="width:100%" src="{% static "img/banner_home.png" %}" alt="">-->
+	<img style="width:100%" src="{% static "img/banner_home.png" %}" alt="">
 
-	<img style="width: 100%" src="{% static "/img/bg-01.jpg" %}" alt="">
+	<img style="width: 100%" src="{% static "/img/bg-01.jpg" %}" alt="">-->
 
-	<div class="container">
+	<div>
 		{% block contents %}
 
 		{% endblock contents %}
